@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown</title>
+    <style>
+        :root {
+            --bg: #111;
+            --accent: #ffb6c1;
+            --text: #fff;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            text-align: center;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Arial, sans-serif;
+        }
+
+        #countdown {
+            font-size: 64px;
+            font-weight: bold;
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <h4 id="countdown">3</h4>
+
+    <audio id="beep" preload="auto">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-alarm-digital-clock-beep-989.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const el = document.getElementById("countdown");
+        const beepSound = document.getElementById("beep");
+        let count = 3;
+
+        const timer = setInterval(() => {
+            if (count >= 0) {
+                el.textContent = count;
+                beepSound.currentTime = 0;
+                beepSound.play().catch(() => {});
+                count--;
+                return;
+            }
+
+            clearInterval(timer);
+            el.textContent = "HAPPY BIRTHDAY 💓";
+            setTimeout(() => {
+                window.location.href = "page1.html";
+            }, 2000);
+        }, 1000);
+    </script>
+</body>
+</html>
