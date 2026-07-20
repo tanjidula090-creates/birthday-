@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Video Runner</title>
+    <style>
+        /* Eliminate all default browser spacing, margins, and scrollbars */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000000;
+        }
+
+        /* Lock the container to fill the absolute boundaries of the screen */
+        .runner-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            width: -webkit-fill-available; /* Fixed layout support for iOS Safari */
+            height: -webkit-fill-available;
+            z-index: 9999;
+            background-color: #000000;
+        }
+
+        /* Force the embed to scale perfectly without distorting aspect ratios */
+        .runner-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="runner-container">
+        <!--
+          - Embedded Cloudinary Media Node
+          - Includes 'autoplay_mode=on-scroll' to initialize playback upon viewport entry
+          - 'allowfullscreen' unlocks native full display parameters inside browser engines
+        -->
+        <iframe 
+            src="https://video2107.oneapp.dev/" 
+            allow="autoplay; fullscreen; encrypted-media; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
+    </div>
+
+</body>
+</html>

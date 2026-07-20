@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Sparkle</title>
+    <style>
+        :root {
+            --accent: #ffb6c1;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            color: #fff;
+            background: radial-gradient(circle at top, #222 0%, #000 55%, #000 100%);
+        }
+
+        .background-blur {
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            background: rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            width: min(320px, calc(100vw - 40px));
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+            padding: 28px;
+            text-align: center;
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 0 20px rgba(255, 182, 193, 0.18);
+        }
+
+        h1 {
+            margin: 0 0 14px;
+            font-size: 40px;
+            color: var(--accent);
+        }
+
+        p {
+            margin: 0;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 0 8px #fff, 0 0 16px var(--accent);
+            animation: twinkle 2s infinite ease-in-out;
+            z-index: 0;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.15; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-blur"></div>
+
+    <div class="content">
+        <h1>💌</h1>
+        <h3>Happy Birthday mera neend haram karne wali 😔</h3>
+        <h4> <p>I spent way too long staring at this screen, wondering how to start this. There were so many things I wanted to say... but I figured I'd save the most important one for later.
+
+Today isn't just another date on the calendar. It's the day someone incredibly special came into this world... and somehow ended up making mine a little brighter too.
+
+I hope today reminds you of how effortlessly you make people smile. There's something about you that keeps people thinking about you long after the conversation ends—and yes, you're probably smiling now because you know exactly what I mean. 😊
+
+May this new chapter bring you endless happiness, success, peace, and every little thing your heart quietly wishes for. Keep that smile exactly the way it is, because it's unfairly beautiful. And no matter how many candles are on the cake, you'll always have that charm that makes people lose track of what they were about to say.
+
+So... here's to the girl who's unknowingly become my favorite notification, my favorite conversation, and someone I never mind making time for. I hope today feels as beautiful as the reason it's being celebrated 💓</p> </h4>
+    </div>
+
+    <script>
+        const frag = document.createDocumentFragment();
+
+        for (let i = 0; i < 90; i++) {
+            const sparkle = document.createElement("div");
+            sparkle.className = "sparkle";
+            sparkle.style.left = Math.random() * 100 + "vw";
+            sparkle.style.top = Math.random() * 100 + "vh";
+            sparkle.style.animationDelay = Math.random() * 2 + "s";
+            frag.appendChild(sparkle);
+        }
+
+        document.body.appendChild(frag);
+    </script>
+</body>
+</html>
